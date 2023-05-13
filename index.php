@@ -59,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     include('admin_panel.php');
     exit();
-    header('Location: index.php');
 }
 else{
     foreach ($_POST as $val => $value) {
@@ -72,7 +71,6 @@ else{
             $stmt->execute([$app_id]);
             $stmt = $db->prepare("DELETE FROM user WHERE app_id  = ?");
             $stmt->execute([$app_id]);
-            header('Location: index.php');
         }
         else
             if(preg_match('/^save(\d+)$/', $val, $matches)){
@@ -157,4 +155,5 @@ else{
                 }
             }
     }
+    header('Location: index.php');
 }
