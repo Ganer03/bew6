@@ -65,11 +65,11 @@ else{
         if (preg_match('/^clear(\d+)$/', $val, $matches)){
             $app_id = $matches[1];
             setcookie('clear', $app_id, time() + 24 * 60 * 60);
-            $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
+            $stmt = $db->prepare("DELETE FROM user WHERE app_id  = ?");
             $stmt->execute([$app_id]);
             $stmt = $db->prepare("DELETE FROM userconnection WHERE idap = ?");
             $stmt->execute([$app_id]);
-            $stmt = $db->prepare("DELETE FROM user WHERE app_id  = ?");
+            $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
             $stmt->execute([$app_id]);
         }
         if(preg_match('/^save(\d+)$/', $val, $matches)){
