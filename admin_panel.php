@@ -87,10 +87,6 @@ print('Левитация: ' . $levitation . '<br>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M">M</label>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W" checked="checked">W</label>');
                 }
-                else{
-                    printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M">M</label>');
-                    printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W">W</label>');
-                }
             }
             echo '</td><td>';
             for ($i = 1; $i < $value['kol_kon']; $i++) {
