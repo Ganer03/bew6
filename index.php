@@ -140,6 +140,8 @@ else{
                 $stmt = $db->prepare("SELECT idsuper FROM userconnection WHERE idap = ?");
                 $stmt->execute([$app_id]);
                 $old_abilities = $stmt->fetchAll(PDO::FETCH_COLUMN);
+                var_dump($mas);
+                var_dump($old_dates[0]);
                 if (array_diff($mas, $old_dates[0])) {
                     $stmt = $db->prepare("UPDATE application SET name = ?, email = ?, year = ?, pol = ?, kol_kon = ?, biography = ? WHERE id = ?");
                     $stmt->execute([$mas['name'], $mas['email'], $mas['year'], $mas['pol'], $mas['kol_kon'], $mas['biography'], $app_id]);
