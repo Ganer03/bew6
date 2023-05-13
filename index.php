@@ -83,6 +83,7 @@ else{
                 $mas['limbs'] = $_POST['limbs' . $app_id];
                 $abilities = $_POST['super[]' . $app_id];
                 var_dump($abilities);
+                exit();
                 $filtred_abilities = array_filter($abilities, function($value) {return($value == 1 || $value == 2 || $value == 3);});
                 $mas['biography'] = $_POST['biography' . $app_id];
                 $fio = $mas['fio'];
@@ -155,5 +156,5 @@ else{
                 }
             }
     }
-    //header('Location: index.php');
+    header('Location: index.php');
 }
