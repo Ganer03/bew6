@@ -67,10 +67,14 @@ else{
             setcookie('clear', $app_id, time() + 24 * 60 * 60);
             $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
             $stmt->execute([$app_id]);
+            print(1);
             $stmt = $db->prepare("DELETE FROM userconnection WHERE idap = ?");
             $stmt->execute([$app_id]);
+            print(1);
             $stmt = $db->prepare("DELETE FROM user WHERE app_id  = ?");
             $stmt->execute([$app_id]);
+            print(1);
+            exit();
         }
         else
             if(preg_match('/^save(\d+)$/', $val, $matches)){
