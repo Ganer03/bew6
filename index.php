@@ -76,7 +76,7 @@ else{
             if(preg_match('/^save(\d+)$/', $val, $matches)){
                 $app_id = $matches[1];
                 $mas = array();
-                $mas['fio'] = $_POST['fio' . $app_id];
+                $mas['name'] = $_POST['fio' . $app_id];
                 $mas['email'] = $_POST['email' . $app_id];
                 $mas['year'] = $_POST['year' . $app_id];
                 $mas['pol'] = $_POST['pol' . $app_id];
@@ -84,7 +84,7 @@ else{
                 $abilities = $_POST['super' . $app_id];
                 $filtred_abilities = array_filter($abilities, function($value) {return($value == 1 || $value == 2 || $value == 3);});
                 $mas['biography'] = $_POST['biography' . $app_id];
-                $fio = $mas['fio'];
+                $fio = $mas['name'];
                 $email = $mas['email'];
                 $year = $mas['year'];
                 $pol = $mas['pol'];
@@ -140,7 +140,7 @@ else{
                 $stmt = $db->prepare("SELECT idsuper FROM userconnection WHERE idap = ?");
                 $stmt->execute([$app_id]);
                 $old_abilities = $stmt->fetchAll(PDO::FETCH_COLUMN);
-                if (array_diff($dates, $old_dates[0])) {
+                if (array_diff($mas, $old_dates[0])) {
                     $stmt = $db->prepare("UPDATE application SET name = ?, email = ?, year = ?, pol = ?, kol_kon = ?, biography = ? WHERE id = ?");
                     $stmt->execute([$mas['name'], $mas['email'], $mas['year'], $mas['pol'], $mas['kol_kon'], $mas['biography'], $app_id]);
                 }
