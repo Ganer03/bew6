@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('biography_error', '', 100000);
         $messages['biography'] = '<p class="msg">Не заполнено поле биографии</p>';
     }
-    //include('admin_panel.php');
+    include('admin_panel.php');
     exit();
 }
 else{
@@ -82,7 +82,7 @@ else{
                 $mas['pol'] = $_POST['pol' . $app_id];
                 $mas['limbs'] = $_POST['limbs' . $app_id];
                 $abilities = $_POST['super[]' . $app_id];
-                print($abilities);
+                var_dump($abilities);
                 $filtred_abilities = array_filter($abilities, function($value) {return($value == 1 || $value == 2 || $value == 3);});
                 $mas['biography'] = $_POST['biography' . $app_id];
                 $fio = $mas['fio'];
@@ -155,5 +155,5 @@ else{
                 }
             }
     }
-    header('Location: index.php');
+    //header('Location: index.php');
 }
