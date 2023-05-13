@@ -78,17 +78,17 @@ print('Левитация: ' . $levitation . '<br>');
                 prinf('<option value="%d">$d год</option>', $i, $i);
             }
             echo '</select>
-              </td>';
+              </td><td>';
             if ($values['pol'] == 'M') {
-                printf('<td><input type="radio" name="pol' . $a . '" value="M" checked="checked">M</td>');
-                printf('<td><input type="radio" name="pol' . $a . '" value="W">W</td>');
+                printf('<input type="radio" name="pol' . $a . '" value="M" checked="checked">M');
+                printf('<input type="radio" name="pol' . $a . '" value="W">W');
             } else {
                 if ($values['pol'] == 'W') {
-                    printf('<td><input type="radio" name="pol' . $a . '" value="M">M</td>');
-                    printf('<td><input type="radio" checked="checked" name="pol' . $a . '" value="W">W</td>');
+                    printf('<input type="radio" name="pol' . $a . '" value="M">M');
+                    printf('<input type="radio" checked="checked" name="pol' . $a . '" value="W">W');
                 }
             }
-            echo '<td>';
+            echo '</td><td>';
             for ($i = 1; $i < $value['kol_kon']; $i++) {
                 printf('<input type="radio" name="limbs' . $a . '" value="%d"/>%d</label>', $i, $i);
             }
