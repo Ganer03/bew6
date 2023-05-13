@@ -80,7 +80,7 @@ else{
                 $mas['email'] = $_POST['email' . $app_id];
                 $mas['year'] = $_POST['year' . $app_id];
                 $mas['pol'] = $_POST['pol' . $app_id];
-                $mas['limbs'] = $_POST['limbs' . $app_id];
+                $mas['kol_kon'] = $_POST['limbs' . $app_id];
                 $abilities = $_POST['super' . $app_id];
                 $filtred_abilities = array_filter($abilities, function($value) {return($value == 1 || $value == 2 || $value == 3);});
                 $mas['biography'] = $_POST['biography' . $app_id];
@@ -88,7 +88,7 @@ else{
                 $email = $mas['email'];
                 $year = $mas['year'];
                 $pol = $mas['pol'];
-                $limbs = $mas['limbs'];
+                $limbs = $mas['kol_kon'];
                 $biography = $mas['biography'];
                 $errors = FALSE;
 
