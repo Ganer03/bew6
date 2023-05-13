@@ -90,6 +90,7 @@ else{
                 $pol = $mas['pol'];
                 $limbs = $mas['limbs'];
                 $biography = $mas['biography'];
+                $errors = FALSE;
 
                 if (empty($fio)) {
                     setcookie('fio_error', '1', time() + 24 * 60 * 60);
