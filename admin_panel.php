@@ -26,12 +26,12 @@ $bessmert = empty($bessmert) ? '0' : $bessmert;
     
 $stmt = $db->prepare("SELECT count(idap) from userconnection where idsuper = 2;");
 $stmt->execute();
-$proh_skv_st = empty($stmt->fetchColumn()) ? '0' : $stmt->fetchColumn();
+$proh_skv_st = $stmt->fetchColumn();
 $proh_skv_st = empty($proh_skv_st) ? '0' : $proh_skv_st;
     
 $stmt = $db->prepare("SELECT count(idap) from userconnection where idsuper = 3;");
 $stmt->execute();
-$levitation = empty($stmt->fetchColumn()) ? '0' : $stmt->fetchColumn();
+$levitation = $stmt->fetchColumn();
 $levitation = empty($levitation) ? '0' : $levitation;
     
 print('Бессмертие: ' . $bessmert . '<br>');
