@@ -102,7 +102,7 @@ print('Левитация: ' . $levitation . '<br>');
             $stmt = $db->prepare("SELECT idsuper FROM userconnection WHERE idap = ?");
             $stmt->execute([$a]);
             $abilities = $stmt->fetchAll(PDO::FETCH_COLUMN);
-            printf('<td><select name="super[]' . $a . '" multiple="multiple">');
+            printf('<td><select name="super' . $a . '[]" multiple="multiple">');
             foreach ($abilities as $sup) {
                 if ($mas[(int)$sup - 1]) {
                     printf('<option value="%d" selected="selected">%s</option>', $sup, $mas[(int)$sup - 1]);
