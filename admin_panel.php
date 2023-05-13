@@ -54,6 +54,7 @@ print('Левитация: ' . $levitation . '<br>');
         </tr>
         <?php
         foreach ($values as $value) {
+            var_dump($value['pol']);
             $a = $value['id'];
             echo '<tr><td>';
             print($a);
