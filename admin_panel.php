@@ -80,13 +80,17 @@ print('Левитация: ' . $levitation . '<br>');
             }
             echo '</select>
               </td><td>';
-            if ($values['pol'] == 'M') {
+            if ($value['pol'] == 'M') {
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M" checked="checked">M</label>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W">W</label>');
             } else {
-                if ($values['pol'] == 'W') {
+                if ($value['pol'] == 'W') {
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M">M</label>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W" checked="checked">W</label>');
+                }
+                else{
+                    printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M">M</label>');
+                    printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W">W</label>');
                 }
             }
             echo '</td><td>';
