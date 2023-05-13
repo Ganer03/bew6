@@ -67,101 +67,94 @@ else{
             setcookie('clear', $app_id, time() + 24 * 60 * 60);
             $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
             $stmt->execute([$app_id]);
-            sleep(1);
-            print(1);
             $stmt = $db->prepare("DELETE FROM userconnection WHERE idap = ?");
             $stmt->execute([$app_id]);
-            print(1);
-            sleep(1);
             $stmt = $db->prepare("DELETE FROM user WHERE app_id  = ?");
             $stmt->execute([$app_id]);
-            print(1);
-            exit();
         }
-        else
-            if(preg_match('/^save(\d+)$/', $val, $matches)){
-                $app_id = $matches[1];
-                $mas = array();
-                $mas['name'] = $_POST['fio' . $app_id];
-                $mas['email'] = $_POST['email' . $app_id];
-                $mas['year'] = $_POST['year' . $app_id];
-                $mas['pol'] = $_POST['pol' . $app_id];
-                $mas['kol_kon'] = $_POST['limbs' . $app_id];
-                $abilities = $_POST['super' . $app_id];
-                $filtred_abilities = array_filter($abilities, function($value) {return($value == 1 || $value == 2 || $value == 3);});
-                $mas['biography'] = $_POST['biography' . $app_id];
-                $fio = $mas['name'];
-                $email = $mas['email'];
-                $year = $mas['year'];
-                $pol = $mas['pol'];
-                $limbs = $mas['kol_kon'];
-                $biography = $mas['biography'];
-                $errors = FALSE;
+        if(preg_match('/^save(\d+)$/', $val, $matches)){
+            $app_id = $matches[1];
+            $mas = array();
+            $mas['name'] = $_POST['fio' . $app_id];
+            $mas['email'] = $_POST['email' . $app_id];
+            $mas['year'] = $_POST['year' . $app_id];
+            $mas['pol'] = $_POST['pol' . $app_id];
+            $mas['kol_kon'] = $_POST['limbs' . $app_id];
+            $abilities = $_POST['super' . $app_id];
+            $filtred_abilities = array_filter($abilities, function($value) {return($value == 1 || $value == 2 || $value == 3);});
+            $mas['biography'] = $_POST['biography' . $app_id];
+            $fio = $mas['name'];
+            $email = $mas['email'];
+            $year = $mas['year'];
+            $pol = $mas['pol'];
+            $limbs = $mas['kol_kon'];
+            $biography = $mas['biography'];
+            $errors = FALSE;
 
-                if (empty($fio)) {
-                    setcookie('fio_error', '1', time() + 24 * 60 * 60);
-                    $errors = TRUE;
-                }
-                if (empty($email)) {
-                    setcookie('email_error', '1', time() + 24 * 60 * 60);
-                    $errors = TRUE;
-                }
-                if (!is_numeric($year) || (2023 - $year) < 14) {
-                    setcookie('year_error', '1', time() + 24 * 60 * 60);
-                    $errors = TRUE;
-                }
-                if (empty($pol) || ($pol != 'M' && $pol != 'W')) {
-                    setcookie('pol_error', '1', time() + 24 * 60 * 60);
-                    $errors = TRUE;
-                }
-                if (empty($limbs) || ($limbs<1 && $limbs>5)) {
-                    setcookie('limbs_error', '1', time() + 24 * 60 * 60);
-                    $errors = TRUE;
-                }
-                if (empty($abilities) || count($filtred_abilities) != count($abilities)) {
-                    setcookie('super_error', '1', time() + 24 * 60 * 60);
-                    $errors = TRUE;
-                }
-                if (empty($biography)) {
-                    setcookie('biography_error', '1', time() + 24 * 60 * 60);
-                    $errors = TRUE;
-                }
-                if ($errors) {
-                    setcookie('error_id', $app_id, time() + 24 * 60 * 60);
-                    header('Location: index.php');
-                    exit();
-                } else {
-                    setcookie('name_error', '', 100000);
-                    setcookie('email_error', '', 100000);
-                    setcookie('year_error', '', 100000);
-                    setcookie('pol_error', '', 100000);
-                    setcookie('limbs_error', '', 100000);
-                    setcookie('super_error', '', 100000);
-                    setcookie('biography_error', '', 100000);
-                    setcookie('error_id', '', 100000);
-                }
-                $stmt = $db->prepare("SELECT name, email, year, pol, kol_kon, biography FROM application WHERE id = ?");
-                $stmt->execute([$app_id]);
-                $old_dates = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (empty($fio)) {
+                setcookie('fio_error', '1', time() + 24 * 60 * 60);
+                $errors = TRUE;
+            }
+            if (empty($email)) {
+                setcookie('email_error', '1', time() + 24 * 60 * 60);
+                $errors = TRUE;
+            }
+            if (!is_numeric($year) || (2023 - $year) < 14) {
+                setcookie('year_error', '1', time() + 24 * 60 * 60);
+                $errors = TRUE;
+            }
+            if (empty($pol) || ($pol != 'M' && $pol != 'W')) {
+                setcookie('pol_error', '1', time() + 24 * 60 * 60);
+                $errors = TRUE;
+            }
+            if (empty($limbs) || ($limbs<1 && $limbs>5)) {
+                setcookie('limbs_error', '1', time() + 24 * 60 * 60);
+                $errors = TRUE;
+            }
+            if (empty($abilities) || count($filtred_abilities) != count($abilities)) {
+                setcookie('super_error', '1', time() + 24 * 60 * 60);
+                $errors = TRUE;
+            }
+            if (empty($biography)) {
+                setcookie('biography_error', '1', time() + 24 * 60 * 60);
+                $errors = TRUE;
+            }
+            if ($errors) {
+                setcookie('error_id', $app_id, time() + 24 * 60 * 60);
+                header('Location: index.php');
+                exit();
+            } else {
+                setcookie('name_error', '', 100000);
+                setcookie('email_error', '', 100000);
+                setcookie('year_error', '', 100000);
+                setcookie('pol_error', '', 100000);
+                setcookie('limbs_error', '', 100000);
+                setcookie('super_error', '', 100000);
+                setcookie('biography_error', '', 100000);
+                setcookie('error_id', '', 100000);
+            }
+            $stmt = $db->prepare("SELECT name, email, year, pol, kol_kon, biography FROM application WHERE id = ?");
+            $stmt->execute([$app_id]);
+            $old_dates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                $stmt = $db->prepare("SELECT idsuper FROM userconnection WHERE idap = ?");
+            $stmt = $db->prepare("SELECT idsuper FROM userconnection WHERE idap = ?");
+            $stmt->execute([$app_id]);
+            $old_abilities = $stmt->fetchAll(PDO::FETCH_COLUMN);
+            var_dump($mas);
+            var_dump($old_dates[0]);
+            if (array_diff($mas, $old_dates[0])) {
+                $stmt = $db->prepare("UPDATE application SET name = ?, email = ?, year = ?, pol = ?, kol_kon = ?, biography = ? WHERE id = ?");
+                $stmt->execute([$mas['name'], $mas['email'], $mas['year'], $mas['pol'], $mas['kol_kon'], $mas['biography'], $app_id]);
+            }
+            if (array_diff($abilities, $old_abilities) || count($abilities) != count($old_abilities)) {
+                $stmt = $db->prepare("DELETE FROM userconnection WHERE idap = ?");
                 $stmt->execute([$app_id]);
-                $old_abilities = $stmt->fetchAll(PDO::FETCH_COLUMN);
-                var_dump($mas);
-                var_dump($old_dates[0]);
-                if (array_diff($mas, $old_dates[0])) {
-                    $stmt = $db->prepare("UPDATE application SET name = ?, email = ?, year = ?, pol = ?, kol_kon = ?, biography = ? WHERE id = ?");
-                    $stmt->execute([$mas['name'], $mas['email'], $mas['year'], $mas['pol'], $mas['kol_kon'], $mas['biography'], $app_id]);
-                }
-                if (array_diff($abilities, $old_abilities) || count($abilities) != count($old_abilities)) {
-                    $stmt = $db->prepare("DELETE FROM userconnection WHERE idap = ?");
-                    $stmt->execute([$app_id]);
-                    $stmt = $db->prepare("INSERT INTO userconnection (idap, idsuper) VALUES (?, ?)");
-                    foreach ($abilities as $super_id) {
-                        $stmt->execute([$app_id, $super_id]);
-                    }
+                $stmt = $db->prepare("INSERT INTO userconnection (idap, idsuper) VALUES (?, ?)");
+                foreach ($abilities as $super_id) {
+                    $stmt->execute([$app_id, $super_id]);
                 }
             }
+        }
     }
     header('Location: index.php');
 }
