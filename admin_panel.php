@@ -54,7 +54,6 @@ print('Левитация: ' . $levitation . '<br>');
         </tr>
         <?php
         foreach ($values as $value) {
-            var_dump((int)$value['year']);
             $a = $value['id'];
             echo '<tr><td>';
             print($a);
@@ -81,12 +80,12 @@ print('Левитация: ' . $levitation . '<br>');
             echo '</select>
               </td><td>';
             if ($values['pol'] == 'M') {
-                printf('<input type="radio" name="pol' . $a . '" value="M" checked="checked">M');
-                printf('<input type="radio" name="pol' . $a . '" value="W">W');
+                printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M" checked="checked">M</label>');
+                printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W">W</label>');
             } else {
                 if ($values['pol'] == 'W') {
-                    printf('<input type="radio" name="pol' . $a . '" value="M">M');
-                    printf('<input type="radio" checked="checked" name="pol' . $a . '" value="W">W');
+                printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M">M</label>');
+                printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W" checked="checked">W</label>');
                 }
             }
             echo '</td><td>';
