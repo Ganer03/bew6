@@ -55,6 +55,7 @@ print('Левитация: ' . $levitation . '<br>');
         <?php
         foreach ($values as $value) {
             $a = $value['id'];
+            print($a);
             echo '<tr><td>';
             print($a);
             echo '</td>';
@@ -70,11 +71,11 @@ print('Левитация: ' . $levitation . '<br>');
               </td>
               <td>
                 <select name="year' . $a . '">';
-            for ($i = 1922; $i < $value['year']; $i++) {
+            for ($i = 1922; $i < (int)$value['year']; $i++) {
                 prinf('<option value="%d">$d год</option>', $i, $i);
             }
             prinf('<option selected="selected" value="%d">$d год</option>', $i, $i);
-            for ($i = $value['year'] + 1; $i < 2022; $i++) {
+            for ($i = (int)$value['year'] + 1; $i < 2022; $i++) {
                 prinf('<option value="%d">$d год</option>', $i, $i);
             }
             echo '</select>
