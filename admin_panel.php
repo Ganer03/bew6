@@ -72,11 +72,11 @@ print('Левитация: ' . $levitation . '<br>');
               <td>
                 <select name="year' . $a . '">';
             for ($i = 1922; $i < $value['year']; $i++) {
-                prinf('<option value="%d">%d год</option>', $i, $i);
+                printf('<option value="%d">%d год</option>', $i, $i);
             }
-            prinf('<option selected="selected" value="%d">%d год</option>', $value['year'], $value['year']);
+            printf('<option selected="selected" value="%d">%d год</option>', $i, $i);
             for ($i = $value['year'] + 1; $i < 2022; $i++) {
-                prinf('<option value="%d">%d год</option>', $i, $i);
+                printf('<option value="%d">%d год</option>', $i, $i);
             }
             echo '</select>
               </td><td>';
