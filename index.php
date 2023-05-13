@@ -82,6 +82,7 @@ else{
                 $mas['pol'] = $_POST['pol' . $app_id];
                 $mas['limbs'] = $_POST['limbs' . $app_id];
                 $abilities = $_POST['super[]' . $app_id];
+                print($abilities);
                 $filtred_abilities = array_filter($abilities, function($value) {return($value == 1 || $value == 2 || $value == 3);});
                 $mas['biography'] = $_POST['biography' . $app_id];
                 $fio = $mas['fio'];
@@ -103,7 +104,7 @@ else{
                     setcookie('year_error', '1', time() + 24 * 60 * 60);
                     $errors = TRUE;
                 }
-                if (empty($pol) || ($pol != 'male' && $pol != 'female')) {
+                if (empty($pol) || ($pol != 'M' && $pol != 'W')) {
                     setcookie('pol_error', '1', time() + 24 * 60 * 60);
                     $errors = TRUE;
                 }
@@ -154,5 +155,5 @@ else{
                 }
             }
     }
-    header('Location: index.php');
+    //header('Location: index.php');
 }
