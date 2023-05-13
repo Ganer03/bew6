@@ -1,6 +1,6 @@
 <?php
 
-include('admin.php');
+//include('admin.php');
 
 $user = 'u52802';
 $pass = '7560818';
