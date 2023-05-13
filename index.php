@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('biography_error', '', 100000);
         $messages['biography'] = '<p class="msg">Не заполнено поле биографии</p>';
     }
-    include('admin_panel.php');
+    //include('admin_panel.php');
     exit();
 }
 else{
