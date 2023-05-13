@@ -147,7 +147,7 @@ else{
                 if (array_diff($abilities, $old_abilities) || count($abilities) != count($old_abilities)) {
                     $stmt = $db->prepare("DELETE FROM userconnection WHERE idap = ?");
                     $stmt->execute([$app_id]);
-                    $stmt = $db->prepare("INSERT INTO abilities (idap, idsuper) VALUES (?, ?)");
+                    $stmt = $db->prepare("INSERT INTO userconnection (idap, idsuper) VALUES (?, ?)");
                     foreach ($abilities as $super_id) {
                         $stmt->execute([$app_id, $super_id]);
                     }
