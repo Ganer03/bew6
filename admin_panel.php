@@ -126,5 +126,5 @@ print('Левитация: ' . $levitation . '<br>');
         }
         ?>
     </table>
-   <?php if (!empty($_SESSION['login'])) {echo '<input type="hidden" name="token" value="' . $_SESSION["token"] . '">'; } ?>
+   <?php echo '<input type="hidden" name="token" value="' . $_SESSION["token"] . '">'; ?>
 </form>
