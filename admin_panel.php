@@ -60,12 +60,12 @@ print('Левитация: ' . $levitation . '<br>');
             echo '</td>';
             echo '<td>
                 <input class="inp" name="fio' . $a . '" value="';
-            print(htmlspecialchars($value['name'])));
+            print(htmlspecialchars($value['name']));
             echo '">
               </td>
               <td>
                 <input class="inp" name="email' . $a . '" value="';
-            print(htmlspecialchars($value['email'])));
+            print(htmlspecialchars($value['email']));
             echo '">
               </td>
               <td>
@@ -79,11 +79,11 @@ print('Левитация: ' . $levitation . '<br>');
             }
             echo '</select>
               </td><td>';
-            if (htmlspecialchars($value['pol'] == 'M'))) {
+            if (htmlspecialchars($value['pol'] == 'M')) {
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M" checked="checked">M</label>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W">W</label>');
             } else {
-                if (htmlspecialchars($value['pol'] == 'W'))) {
+                if (htmlspecialchars($value['pol'] == 'W')) {
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M">M</label>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W" checked="checked">W</label>');
                 }
