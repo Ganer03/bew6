@@ -161,6 +161,8 @@ else{
     header('Location: index.php');
     }
     else{
+        var_dump($_POST['token']);
+        var_dump($_SESSION['token']));
         die('Ошибка CSRF: недопустимый токен');
     }
 }
