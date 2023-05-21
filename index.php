@@ -162,7 +162,7 @@ else{
     }
     else{
         var_dump($_POST['token']);
-        var_dump($_SESSION['token']));
+        var_dump($_SESSION['token']);
         die('Ошибка CSRF: недопустимый токен');
     }
 }
