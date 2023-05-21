@@ -60,12 +60,12 @@ print('Левитация: ' . $levitation . '<br>');
             echo '</td>';
             echo '<td>
                 <input class="inp" name="fio' . $a . '" value="';
-            print($value['name']);
+            print(htmlspecialchars($value['name'])));
             echo '">
               </td>
               <td>
                 <input class="inp" name="email' . $a . '" value="';
-            print($value['email']);
+            print(htmlspecialchars($value['email'])));
             echo '">
               </td>
               <td>
@@ -79,11 +79,11 @@ print('Левитация: ' . $levitation . '<br>');
             }
             echo '</select>
               </td><td>';
-            if ($value['pol'] == 'M') {
+            if (htmlspecialchars($value['pol'] == 'M'))) {
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M" checked="checked">M</label>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W">W</label>');
             } else {
-                if ($value['pol'] == 'W') {
+                if (htmlspecialchars($value['pol'] == 'W'))) {
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="M">M</label>');
                 printf('<label class="pot"><input type="radio" name="pol' . $a . '" value="W" checked="checked">W</label>');
                 }
@@ -116,7 +116,7 @@ print('Левитация: ' . $levitation . '<br>');
             }
             printf('</select></td>');
             echo '<td><textarea name="biography' . $a . '" id="" cols="20" rows="5" maxlength="256">';
-            print $value['biography'];
+            print htmlspecialchars($value['biography']);
             echo '</textarea></td>';
             echo '<td>
                     <input name="save' . $a . '" type="submit" value="save' . $a . '"/>
