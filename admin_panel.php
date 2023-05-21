@@ -35,9 +35,9 @@ $stmt->execute();
 $levitation = $stmt->fetchColumn();
 $levitation = empty($levitation) ? '0' : $levitation;
     
-print('Бессмертие: ' . $bessmert . '<br>');
+print('<div class='sup_see'>Бессмертие: ' . $bessmert . '<br>');
 print('Прохождение сквозь стены: ' . $proh_skv_st . '<br>');
-print('Левитация: ' . $levitation . '<br>');
+print('Левитация: ' . $levitation . '</div><br>');
 ?>
 
 <form action="" method="POST">
