@@ -39,7 +39,7 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
 }
 session_start();
 
-Login(){
+function Login(){
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Неправильный логин или пароль</h1>');
