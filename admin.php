@@ -9,18 +9,42 @@
 // PHP хранит логин и пароль в суперглобальном массиве $_SERVER.
 // Подробнее см. стр. 26 и 99 в учебном пособии Веб-программирование и веб-сервисы.
 if (empty($_SERVER['PHP_AUTH_USER']) ||
-    empty($_SERVER['PHP_AUTH_PW']) ||
-    $_SERVER['PHP_AUTH_USER'] != 'ivan' ||
-    md5($_SERVER['PHP_AUTH_PW']) != md5('vanya03')) {
-    header('HTTP/1.1 401 Unanthorized');
-    $validUser = 'ivan';
-    $validPassHash = 'vanya03';
-    header('WWW-Authenticate: Basic realm="My site"');
-    print('<h1>401 Требуется авторизация</h1>');
-    exit();
+    empty($_SERVER['PHP_AUTH_PW'])){
+    $user = 'u52801';
+    $pass = '9320258';
+    $db = new PDO('mysql:host=localhost;dbname=u52802', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+
+    $stmt = $db->prepare("SELECT login, password FROM admin WHERE login = ?");
+    $stmt->execute([$_SERVER['PHP_AUTH_USER']]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($row) {
+        $login= $row['login'];
+        $password = $row['password'];
+    } else {
+        Login();
+    }
+    if ($row) {
+        $login= $row['login'];
+        $password = $row['password'];
+    } else {
+        Login();
+    }
+    
+    if ($_SERVER['PHP_AUTH_USER'] != $login ||
+    md5($_SERVER['PHP_AUTH_PW']) != $password){
+        Login();
+    }
+    Login();
 }
 session_start();
 
+Login(){
+    header('HTTP/1.1 401 Unanthorized');
+    header('WWW-Authenticate: Basic realm="My site"');
+    print('<h1>401 Неправильный логин или пароль</h1>');
+    exit();
+}
 // *********
 // Здесь нужно прочитать отправленные ранее пользователями данные и вывести в таблицу.
 // Реализовать просмотр и удаление всех данных.
