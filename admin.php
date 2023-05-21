@@ -13,6 +13,8 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     $_SERVER['PHP_AUTH_USER'] != 'ivan' ||
     md5($_SERVER['PHP_AUTH_PW']) != md5('vanya03')) {
     header('HTTP/1.1 401 Unanthorized');
+    $validUser = 'ivan';
+    $validPassHash = 'vanya03';
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация</h1>');
     exit();
