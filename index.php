@@ -57,10 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('biography_error', '', 100000);
         $messages['biography'] = '<p class="msg">Не заполнено поле биографии</p>';
     }
+    $_SESSION['token'] = bin2hex(random_bytes(64));
+    $_SESSION['login'] = $validUser;
     include('admin_panel.php');
     exit();
 }
 else{
+    if (!empty($_POST['token']) && hash_equals($_POST['token'], $_SESSION['token'])) {
     foreach ($_POST as $val => $value) {
         if (preg_match('/^clear(\d+)$/', $val, $matches)){
             $app_id = $matches[1];
@@ -157,4 +160,8 @@ else{
         }
     }
     header('Location: index.php');
+    }
+    else{
+        die('Ошибка CSRF: недопустимый токен');
+    }
 }
