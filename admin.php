@@ -9,7 +9,7 @@
 // Подробнее см. стр. 26 и 99 в учебном пособии Веб-программирование и веб-сервисы.
 var_dump($_SERVER['PHP_AUTH_USER']);
 var_dump($_SERVER['PHP_AUTH_PW']);
-var_dump(empty($_SERVER['PHP_AUTH_USER']);
+var_dump(empty($_SERVER['PHP_AUTH_USER']));
 if (empty($_SERVER['PHP_AUTH_USER']) ||
     empty($_SERVER['PHP_AUTH_PW'])){
     $user = 'u52802';
