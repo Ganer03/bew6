@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-include('admin.php');
+if (!empty($_POST['token']) && hash_equals($_POST['token'], $_SESSION['token'])){
 $user = 'u52802';
 $pass = '7560818';
 $db = new PDO('mysql:host=localhost;dbname=u52802', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
@@ -129,4 +129,9 @@ print('Левитация: ' . $levitation . '</div><br>');
         ?>
     </table>
    <?php echo '<input type="hidden" name="token" value="' . $_SESSION["token"] . '">'; ?>
+    <?php } 
+    else{
+    include('admin.php');
+    exit();
+    }?>
 </form>
