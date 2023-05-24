@@ -20,9 +20,6 @@ if (!empty($_SERVER['PHP_AUTH_USER']) &&
     if ($row) {
         $login= $row['login'];
         $password = $row['password'];
-        var_dump($login);
-        var_dump($password);
-        exit();
     } else {
         Login();
     }
