@@ -35,7 +35,6 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
         Login();
     }
     session_start();
-    include('index.php');
 }
 
 function Login(){
