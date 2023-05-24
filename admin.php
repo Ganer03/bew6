@@ -10,6 +10,7 @@
 var_dump($_SERVER['PHP_AUTH_USER']);
 var_dump($_SERVER['PHP_AUTH_PW']);
 var_dump(empty($_SERVER['PHP_AUTH_USER']));
+exit();
 if (empty($_SERVER['PHP_AUTH_USER']) ||
     empty($_SERVER['PHP_AUTH_PW'])){
     $user = 'u52802';
