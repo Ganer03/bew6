@@ -7,10 +7,15 @@
 // Пример HTTP-аутентификации.
 // PHP хранит логин и пароль в суперглобальном массиве $_SERVER.
 // Подробнее см. стр. 26 и 99 в учебном пособии Веб-программирование и веб-сервисы.
-var_dump($_SERVER['PHP_AUTH_USER']);
-var_dump($_SERVER['PHP_AUTH_PW']);
-var_dump(empty($_SERVER['PHP_AUTH_USER']));
-exit();
+try{
+    var_dump($_SERVER['PHP_AUTH_USER']);
+    var_dump($_SERVER['PHP_AUTH_PW']);
+    var_dump(empty($_SERVER['PHP_AUTH_USER']));
+    exit();
+}
+catch (Exception $e) {
+    echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+}
 if (empty($_SERVER['PHP_AUTH_USER']) ||
     empty($_SERVER['PHP_AUTH_PW'])){
     $user = 'u52802';
