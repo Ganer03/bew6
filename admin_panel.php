@@ -9,6 +9,7 @@
 </head>
 <body>
 <?php
+include('admin.php');
 $user = 'u52802';
 $pass = '7560818';
 $db = new PDO('mysql:host=localhost;dbname=u52802', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
