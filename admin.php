@@ -34,7 +34,6 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     md5($_SERVER['PHP_AUTH_PW']) != $password){
         Login();
     }
-    Login();
 }
 session_start();
 
