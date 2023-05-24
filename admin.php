@@ -7,8 +7,8 @@
 // Пример HTTP-аутентификации.
 // PHP хранит логин и пароль в суперглобальном массиве $_SERVER.
 // Подробнее см. стр. 26 и 99 в учебном пособии Веб-программирование и веб-сервисы.
-if (!empty($_SERVER['PHP_AUTH_USER']) &&
-    !empty($_SERVER['PHP_AUTH_PW'])){
+if (empty($_SERVER['PHP_AUTH_USER']) ||
+    empty($_SERVER['PHP_AUTH_PW'])){
     $user = 'u52802';
     $pass = '7560818';
     $db = new PDO('mysql:host=localhost;dbname=u52802', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
