@@ -9,7 +9,15 @@
 </head>
 <body>
 <?php
-if (!empty($_SESSION['login']) ||$_SESSION['login']=='ivan'){
+if (empty($_SESSION['login'])){
+    include('index.php');
+    exit();
+}
+    else
+        if ($_SESSION['login'] !='ivan'){
+                include('index.php');
+                exit();
+        }
 $user = 'u52802';
 $pass = '7560818';
 $db = new PDO('mysql:host=localhost;dbname=u52802', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
@@ -129,9 +137,4 @@ print('Левитация: ' . $levitation . '</div><br>');
         ?>
     </table>
    <?php echo '<input type="hidden" name="token" value="' . $_SESSION["token"] . '">'; ?>
-    <?php } 
-    else{
-    include('admin.php');
-    exit();
-    }?>
 </form>
