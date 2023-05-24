@@ -7,17 +7,8 @@
 // Пример HTTP-аутентификации.
 // PHP хранит логин и пароль в суперглобальном массиве $_SERVER.
 // Подробнее см. стр. 26 и 99 в учебном пособии Веб-программирование и веб-сервисы.
-try{
-    var_dump($_SERVER['PHP_AUTH_USER']);
-    var_dump($_SERVER['PHP_AUTH_PW']);
-    var_dump(empty($_SERVER['PHP_AUTH_USER']));
-    exit();
-}
-catch (Exception $e) {
-    echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
-}
-if (empty($_SERVER['PHP_AUTH_USER']) ||
-    empty($_SERVER['PHP_AUTH_PW'])){
+if (!empty($_SERVER['PHP_AUTH_USER']) &&
+    !empty($_SERVER['PHP_AUTH_PW'])){
     $user = 'u52802';
     $pass = '7560818';
     $db = new PDO('mysql:host=localhost;dbname=u52802', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
@@ -43,7 +34,7 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     }
     
     if ($_SERVER['PHP_AUTH_USER'] != $login ||
-    md5($_SERVER['PHP_AUTH_PW']) != $password){
+    md5($_SERVER['PHP_AUTH_PW']) != md5($password)){
         Login();
     }
     session_start();
