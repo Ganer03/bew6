@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-if ($__SESSION['login']=='ivan'){
+if (empty($_SESSION['login']) ||$_SESSION['login']=='ivan'){
 $user = 'u52802';
 $pass = '7560818';
 $db = new PDO('mysql:host=localhost;dbname=u52802', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
