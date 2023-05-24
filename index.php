@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $messages['biography'] = '<p class="msg">Не заполнено поле биографии</p>';
     }
     $_SESSION['token'] = bin2hex(random_bytes(32));
+    $_SESSION['login'] = 'ivan';
     include('admin_panel.php');
     exit();
 }
