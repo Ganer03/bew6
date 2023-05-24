@@ -34,8 +34,8 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     md5($_SERVER['PHP_AUTH_PW']) != $password){
         Login();
     }
+    session_start();
 }
-session_start();
 
 function Login(){
     header('HTTP/1.1 401 Unanthorized');
